@@ -61,7 +61,7 @@ function doSearch(){const v=$q.value.trim().toUpperCase();
   const m=D.filter(x=>x.n.toUpperCase().startsWith(v)).slice(0,8);
   $sugg.innerHTML="";$sugg.hidden=m.length==0;
   m.forEach(x=>{const b=document.createElement("button");b.type="button";b.textContent=x.n;b.addEventListener("click",()=>pickSearch(x));$sugg.appendChild(b)})}
-function pickSearch(x){searchMode=true;searchItem=x;searchFlipped=false;$sugg.hidden=true;$sugg.innerHTML="";$q.value=x.n;drawSearch()}
+function pickSearch(x){searchMode=true;searchItem=x;searchFlipped=false;$sugg.hidden=true;$sugg.innerHTML="";$q.value=x.n;if(batch!==x.b){batch=x.b;$("#sel").value=String(x.b);build(false)}drawSearch()}
 function drawSearch(){const c=searchItem,cc="code"+(c.c.length>12?" sm":""),im=(typeof P[c.n]==="string"&&P[c.n])?[["img",P[c.n]]]:[];
   if(!searchFlipped)card([...im,["nm",c.n],["hint","Tap to reveal the code"]]);
   else card([...im,["nm",c.n],[cc,c.c]]);
