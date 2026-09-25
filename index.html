@@ -18,6 +18,19 @@ select,button{font:inherit;color:var(--fg);background:var(--cd);border:1px solid
 #sugg{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
 #sugg button{width:100%;text-align:left;padding:10px 12px}
 #sugg button:hover{border-color:var(--ac)}
+
+/* Android/mobile: remove the browser tap/focus highlight without changing the app's visual theme. */
+button, #card, select, input {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+button:focus, #card:focus, select:focus, input:focus {
+  outline: none;
+}
+button:active, #card:active {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
 </style><link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#2f7d4f">
 <link rel="icon" href="./icon-192.png">
